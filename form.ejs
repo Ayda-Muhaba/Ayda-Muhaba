@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <style>
+        /* body.wrong-password {
+            background-color:fff;
+        } */
+        .error-msg {
+            color: white;
+            background-color: rgb(161, 203, 222);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .input-error {
+            border: 2px solid rgb(255, 44, 44);
+        }
+    </style>
+</head>
+<body class="<%= wrongPassword ? 'wrong-password' : '' %>">
+    <h1>Submit Your Information</h1>
+
+    <% if (error) { %>
+        <p class="error-msg"><%= error %></p>
+    <% } %>
+
+    <form id="myForm" action="/submit" method="POST">
+        <div> 
+            <label for="Fname">FIRST NAME: </label>
+            <input type="text" id="Fname" name="Fname" required>
+        </div>
+        <br>
+        <div> 
+            <label for="Lname">LAST NAME: </label>
+            <input type="text" id="Lname" name="Lname" required>
+        </div>
+        <br>
+        <div> 
+            <label for="password">PASSWORD: </label>
+            <input type="password" id="password" name="password" class="<%= wrongPassword ? 'input-error' : '' %>" required>
+        </div>
+        <br>
+        <div> 
+            <button type="submit">Submit</button>
+        </div> 
+    </form>
+</body>
+</html>
+
